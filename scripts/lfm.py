@@ -24,4 +24,6 @@ def call(method, params):
 
     url += "&api_key={0}".format(LFM_API_KEY)
 
+    print "Trying to connect to following url: \n" + url
+
     return urllib.urlopen(url).read()
