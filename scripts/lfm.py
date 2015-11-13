@@ -21,11 +21,60 @@ def call(method, **kwargs):
     url = LFM_API_URL + "?method=" + method
 
     for key, value in kwargs.get("params", {}).iteritems():
-        param = "&{0}={1}".format(key, value)
+        param = "&{0}={1}".format(key, urllib.quote(value))
         url += param
 
-    url += "&api_key={0}".format(LFM_API_KEY)
+    url += "&format=json&api_key={0}".format(LFM_API_KEY)
 
     print "Calling:\t" + url
 
+
     return urllib.urlopen(url).read()
+
+LOCATIONS = [
+    "Albania",
+    "Andorra",
+    "Austria",
+    "Belarus",
+    "Belgium",
+    "Bulgaria",
+    "Croatia",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Estonia",
+    "Faroe Islands",
+    "Finland",
+    "France",
+    "Germany",
+    "Gibraltar",
+    "Greece",
+    "Hungary",
+    "Iceland",
+    "Ireland",
+    "Italy",
+    "Latvia",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Macedonia",
+    "Malta",
+    "Moldova",
+    "Monaco",
+    "Netherlands",
+    "Norway",
+    "Poland",
+    "Portugal",
+    "Romania",
+    "San Marino",
+    "Serbia",
+    "Slovakia",
+    "Slovenia",
+    "Spain",
+    "Sweden",
+    "Switzerland",
+    "Ukraine",
+    "United Kingdom",
+    "Isle of Man",
+    "Montenegro"
+]
