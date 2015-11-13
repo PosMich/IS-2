@@ -78,3 +78,7 @@ LOCATIONS = [
     "Isle of Man",
     "Montenegro"
 ]
+
+LOCATIONS = [
+    "Albania"
+]
