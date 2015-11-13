@@ -1,3 +1,5 @@
+__author__ = "Eschbacher - Poschacher"
+
 import urllib
 
 LFM_API_KEY = "4cb074e4b8ec4ee9ad3eb37d6f7eb240"
@@ -15,15 +17,15 @@ LFM_API_URL = "http://ws.audioscrobbler.com/2.0/"
         content = lfm.call("geo.getTopArtists", params)
 """
 
-def call(method, params):
+def call(method, **kwargs):
     url = LFM_API_URL + "?method=" + method
 
-    for key, value in params.iteritems():
+    for key, value in kwargs.get("params", {}).iteritems():
         param = "&{0}={1}".format(key, value)
         url += param
 
     url += "&api_key={0}".format(LFM_API_KEY)
 
-    print "Trying to connect to following url: \n" + url
+    print "Calling:\t" + url
 
     return urllib.urlopen(url).read()
